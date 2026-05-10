@@ -1,0 +1,214 @@
+/* dream-team duett UI — dark, dichte Info-Anzeige, Cyberpunk-light */
+
+:root {
+  --bg: #0a0d12;
+  --bg-elev: #131822;
+  --fg: #e1e6ee;
+  --fg-dim: #8993a4;
+  --accent: #4dd6c4;
+  --accent-warn: #f5a957;
+  --accent-bad: #ef6c70;
+  --border: #1f2a3a;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.duett-app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.duett-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-elev);
+}
+
+.duett-brand {
+  text-decoration: none;
+  color: var(--fg);
+  font-weight: 600;
+  font-size: 1.05rem;
+}
+
+.duett-brand-accent { color: var(--accent); }
+
+.duett-nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.duett-nav-link {
+  color: var(--fg-dim);
+  text-decoration: none;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  transition: color 0.15s;
+}
+
+.duett-nav-link:hover { color: var(--fg); }
+.duett-nav-link.is-active { color: var(--accent); }
+
+.duett-main {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.duett-card {
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.duett-card + .duett-card { margin-top: 0.75rem; }
+
+.duett-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.duett-card-meta {
+  font-size: 0.85rem;
+  color: var(--fg-dim);
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+}
+
+.duett-task {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.duett-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  font-size: 0.78rem;
+}
+
+.duett-tag {
+  background: var(--border);
+  color: var(--fg-dim);
+  padding: 0.1rem 0.5rem;
+  border-radius: 99px;
+}
+
+.duett-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.duett-badge.consensus    { background: rgba(77,214,196,0.15); color: var(--accent); }
+.duett-badge.verifier     { background: rgba(245,169,87,0.15); color: var(--accent-warn); }
+.duett-badge.no-consensus { background: rgba(239,108,112,0.15); color: var(--accent-bad); }
+.duett-badge.live         { background: var(--accent-bad); color: #fff; animation: pulse 1.4s infinite; }
+.duett-badge.sycophancy   { background: rgba(77,214,196,0.2); color: var(--accent); border: 1px solid var(--accent); }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.55; }
+}
+
+.duett-round {
+  border-left: 3px solid var(--border);
+  padding: 0.5rem 0.85rem;
+  margin: 0.4rem 0;
+}
+
+.duett-round.actor-claude { border-left-color: #6e91ff; }
+.duett-round.actor-codex  { border-left-color: var(--accent-warn); }
+
+.duett-round-meta {
+  font-size: 0.78rem;
+  color: var(--fg-dim);
+  margin-bottom: 0.3rem;
+  display: flex;
+  gap: 0.65rem;
+}
+
+.duett-round-text {
+  white-space: pre-wrap;
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+.duett-spend-bar {
+  background: var(--border);
+  height: 12px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.duett-spend-fill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.3s, background 0.3s;
+}
+
+.duett-spend-fill.warn { background: var(--accent-warn); }
+.duett-spend-fill.bad  { background: var(--accent-bad); }
+
+.duett-section-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem 0;
+}
+
+.duett-empty {
+  color: var(--fg-dim);
+  font-style: italic;
+  text-align: center;
+  padding: 2rem;
+}
+
+.duett-error {
+  color: var(--accent-bad);
+  background: rgba(239,108,112,0.1);
+  padding: 0.6rem 0.9rem;
+  border-radius: 6px;
+}
+
+.duett-row {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  margin: 0.3rem 0;
+}
+
+.duett-label {
+  color: var(--fg-dim);
+  min-width: 8rem;
+  font-size: 0.85rem;
+}
+
+.duett-cancel-btn {
+  background: var(--accent-bad);
+  color: #fff;
+  border: none;
+  padding: 0.45rem 0.9rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.duett-cancel-btn:hover { opacity: 0.85; }
+.duett-cancel-btn:disabled { opacity: 0.4; cursor: not-allowed; }
