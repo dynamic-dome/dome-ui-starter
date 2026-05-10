@@ -1,3 +1,12 @@
 packages:
   - "packages/*"
   - "apps/*"
+
+allowBuilds:
+  esbuild: false
+
+# Allow post-install build scripts for trusted native-binary builders.
+# pnpm 11 requires explicit opt-in (security feature).
+# esbuild compiles a native binary on install; vite + vitest depend on it.
+onlyBuiltDependencies:
+  - esbuild
