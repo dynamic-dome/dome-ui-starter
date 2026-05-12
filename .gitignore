@@ -11,3 +11,9 @@ pnpm-debug.log*
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# Playwright MCP browser session artifacts
+.playwright-mcp/
+
+# Cygwin/Git-Bash crash dumps
+*.stackdump
