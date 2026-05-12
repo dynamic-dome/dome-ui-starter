@@ -64,6 +64,17 @@
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-sans: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* DoMe Pulse palette — concrete hex values, used alongside the HSL set above. */
+  /* Migration path: new components reference --dome-* via the tailwind `dome` namespace. */
+  --dome-gold-primary: #C9A23A;
+  --dome-gold-bright: #E6BF52;
+  --dome-gold-deep: #8A6E20;
+  --dome-night: #0B0F1A;
+  --dome-night-elevated: #131826;
+  --dome-accent-blue: #4F7CFF;
+  --dome-ink: #F5F1E6;
+  --dome-ink-muted: #B6AC92;
 }
 
 .dark,

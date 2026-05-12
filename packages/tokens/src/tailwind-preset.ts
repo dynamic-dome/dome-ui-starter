@@ -58,6 +58,16 @@ export const domeTailwindPreset = {
           cyan: "hsl(var(--neon-cyan))",
           magenta: "hsl(var(--neon-magenta))",
         },
+        dome: {
+          "gold-primary": "var(--dome-gold-primary)",
+          "gold-bright": "var(--dome-gold-bright)",
+          "gold-deep": "var(--dome-gold-deep)",
+          night: "var(--dome-night)",
+          "night-elevated": "var(--dome-night-elevated)",
+          "accent-blue": "var(--dome-accent-blue)",
+          ink: "var(--dome-ink)",
+          "ink-muted": "var(--dome-ink-muted)",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",
           foreground: "hsl(var(--sidebar-foreground))",
