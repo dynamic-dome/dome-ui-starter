@@ -1,125 +1,82 @@
-# DoMe UI Starter
+# DoMe UI
 
-Ein startfertiges pnpm-Monorepo für eine eigene React-Komponentenbibliothek: `@dome/ui` mit TypeScript, Storybook, Vitest, Changesets, Verdaccio-Anleitung und CI.
+A small component library extracted from the existing DoMe/Dynamic Dome surfaces:
 
-## Enthalten
+- `dome-dynamics-showcase`: React + Vite + Tailwind + shadcn/Radix primitives.
+- `dynamic-central-orchestrator`: vanilla Telegram Mini App + dashboard tokens (`Organic Obsidian Glow`).
+
+This starter is intentionally split into two packages:
 
 ```txt
-dome-ui-starter/
-├─ packages/ui/          # Komponentenbibliothek @dome/ui
-├─ apps/play/            # kleines Vite-Playground-Projekt
-├─ .storybook/           # zentrale Storybook-Konfiguration
-├─ .changeset/           # Changesets-Konfiguration
-├─ .github/workflows/    # CI + Release-Workflow
-└─ docs/                 # Checkliste und Verdaccio-Anleitung
+packages/tokens  framework-agnostic design tokens, CSS variables, Tailwind preset
+packages/ui      React components for the website/showcase and future projects
 ```
 
-## Voraussetzungen
-
-- Node.js `>=22.13.0`
-- pnpm `>=11`
-
-Empfohlen:
-
-```bash
-corepack enable
-corepack prepare pnpm@11.0.9 --activate
-```
-
-## Installation
+## Install locally
 
 ```bash
 pnpm install
+pnpm -r build
 ```
 
-## Entwicklung
-
-Storybook starten:
-
-```bash
-pnpm storybook
-```
-
-Playground-App starten:
-
-```bash
-pnpm play
-```
-
-Library im Watch-Modus bauen:
-
-```bash
-pnpm dev
-```
-
-## Qualität
-
-```bash
-pnpm lint
-pnpm typecheck
-pnpm test
-pnpm build
-pnpm build:storybook
-```
-
-## Komponenten verwenden
-
-In einer App:
+## Use in a React app
 
 ```tsx
-import { Button, Input, Modal, Stack, ThemeProvider } from "@dome/ui";
+// src/main.tsx
 import "@dome/ui/styles.css";
-
-export function App() {
-  return (
-    <ThemeProvider theme="light">
-      <Stack gap="md">
-        <Input label="Name" placeholder="Max Mustermann" />
-        <Button>Speichern</Button>
-      </Stack>
-    </ThemeProvider>
-  );
-}
 ```
 
-## Versionierung mit Changesets
-
-Änderung beschreiben:
-
-```bash
-pnpm changeset
+```tsx
+import { Button, DoMeHero, Logo, SectionHeading } from "@dome/ui";
 ```
 
-Versionen und Changelogs schreiben:
+Update Tailwind:
 
-```bash
-pnpm version-packages
+```ts
+// tailwind.config.ts
+import type { Config } from "tailwindcss";
+import { domeTailwindPreset } from "@dome/tokens/tailwind-preset";
+
+export default {
+  presets: [domeTailwindPreset],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@dome/ui/dist/**/*.{js,mjs}",
+  ],
+} satisfies Config;
 ```
 
-Pakete bauen und veröffentlichen:
+## Use in the vanilla miniapp
+
+The miniapp should keep its vanilla JS architecture. Use the token package as a shared CSS source:
 
 ```bash
-pnpm release
+pnpm --filter @dome/tokens build
+cp packages/tokens/dist/miniapp-theme.css ../dynamic-central-orchestrator/miniapp/css/dome-tokens.css
 ```
 
-## Lokal veröffentlichen mit Verdaccio
+Then import it before `base.css` / `components.css`:
 
-Die vollständige Anleitung liegt in [`docs/verdaccio.md`](docs/verdaccio.md).
+```html
+<link rel="stylesheet" href="/miniapp/css/dome-tokens.css">
+```
 
-Kurzfassung:
+See `adapters/dynamic-central-orchestrator/MINIAPP_MIGRATION.md` and `adapters/dome-dynamics-showcase/MIGRATION.md`.
+
+## Publish to local Verdaccio
 
 ```bash
-pnpm add -g verdaccio
 verdaccio
 npm set registry http://localhost:4873
 npm adduser --registry http://localhost:4873
-pnpm --filter @dome/ui build
-pnpm --filter @dome/ui publish --registry http://localhost:4873 --access public
+pnpm release:local
 ```
 
-## Nächste sinnvolle Schritte
+## Component philosophy
 
-- Design Tokens erweitern: Farben, Typografie, Breakpoints.
-- Weitere Komponenten hinzufügen: `Textarea`, `Select`, `Toast`, `Badge`, `Card`.
-- Storybook-Docs pro Komponente mit Do/Don't-Beispielen ergänzen.
-- Nach dem ersten `pnpm install` die generierte `pnpm-lock.yaml` committen.
+DoMe UI has two design modes:
+
+1. **DoMe Website Theme**: dark editorial surface, brushed gold, neon cyan/magenta, Space Grotesk + Inter.
+2. **DCO Miniapp Theme**: compact operational UI, Organic Obsidian Glow, cyan as action/status signal, quiet motion.
+
+The React components use the same token names as the current website. The miniapp package exports compatible CSS variables and class recipes so the vanilla app can migrate gradually instead of being rewritten in React.

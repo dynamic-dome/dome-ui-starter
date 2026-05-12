@@ -1,0 +1,73 @@
+/* DoMe Dynamics website theme — extracted from dome-dynamics-showcase. */
+:root,
+.dome-theme {
+  color-scheme: dark;
+
+  --background: 222 18% 5%;
+  --foreground: 40 25% 92%;
+
+  --card: 222 20% 7%;
+  --card-foreground: 40 20% 92%;
+
+  --popover: 222 22% 6%;
+  --popover-foreground: 40 20% 92%;
+
+  --primary: 42 65% 58%;
+  --primary-foreground: 222 30% 6%;
+
+  --secondary: 222 16% 12%;
+  --secondary-foreground: 40 20% 90%;
+
+  --muted: 222 14% 11%;
+  --muted-foreground: 40 8% 62%;
+
+  --accent: 188 95% 58%;
+  --accent-foreground: 222 30% 6%;
+
+  --destructive: 0 72% 55%;
+  --destructive-foreground: 40 20% 95%;
+
+  --border: 222 18% 14%;
+  --input: 222 18% 12%;
+  --ring: 42 65% 58%;
+
+  --gold: 42 65% 58%;
+  --gold-soft: 42 50% 70%;
+  --gold-deep: 38 55% 42%;
+  --neon-cyan: 188 95% 58%;
+  --neon-magenta: 320 95% 62%;
+
+  --sidebar-background: 222 18% 5%;
+  --sidebar-foreground: 40 20% 90%;
+  --sidebar-primary: 42 65% 58%;
+  --sidebar-primary-foreground: 222 30% 6%;
+  --sidebar-accent: 222 16% 12%;
+  --sidebar-accent-foreground: 40 20% 90%;
+  --sidebar-border: 222 18% 14%;
+  --sidebar-ring: 42 65% 58%;
+
+  --radius: 0.75rem;
+
+  --gradient-gold: linear-gradient(135deg, hsl(42 70% 65%) 0%, hsl(38 60% 45%) 50%, hsl(42 70% 60%) 100%);
+  --gradient-neon: linear-gradient(90deg, hsl(var(--neon-cyan)) 0%, hsl(var(--neon-magenta)) 100%);
+  --gradient-surface: linear-gradient(180deg, hsl(222 22% 8%) 0%, hsl(222 18% 5%) 100%);
+  --gradient-panel: linear-gradient(160deg, hsl(222 22% 9% / 0.9), hsl(222 18% 6% / 0.9));
+  --gradient-radial-gold: radial-gradient(circle at 50% 0%, hsl(42 65% 50% / 0.18), transparent 60%);
+  --gradient-radial-neon: radial-gradient(circle at 50% 50%, hsl(320 95% 55% / 0.15), hsl(188 95% 55% / 0.1) 40%, transparent 70%);
+
+  --shadow-gold: 0 8px 40px -12px hsl(42 65% 50% / 0.45);
+  --shadow-neon: 0 0 60px -12px hsl(320 95% 60% / 0.45);
+  --shadow-panel: 0 20px 60px -20px hsl(222 50% 0% / 0.8), 0 0 0 1px hsl(42 50% 50% / 0.08) inset;
+
+  --transition-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+}
+
+.dark,
+.dome-theme.dark {
+  --background: 222 18% 5%;
+  --foreground: 40 25% 92%;
+}

@@ -1,0 +1,90 @@
+/* Dynamic Central Orchestrator miniapp/dashboard tokens — Organic Obsidian Glow. */
+:root,
+.dome-miniapp-theme {
+  color-scheme: dark;
+
+  --ink-0: oklch(13% 0.03 245);
+  --ink-1: oklch(17% 0.04 243);
+  --ink-2: oklch(22% 0.05 242);
+  --ink-3: oklch(32% 0.06 244);
+
+  --cyan: #3DFFE7;
+  --cyan-soft: oklch(78% 0.12 188);
+  --cyan-dim: oklch(58% 0.10 188);
+
+  --profile-haiku: #3DFFE7;
+  --profile-sonnet: oklch(78% 0.14 240);
+  --profile-opus: oklch(70% 0.16 295);
+
+  --lane-haiku: color-mix(in oklch, var(--profile-haiku) 35%, var(--ink-2));
+  --lane-sonnet: color-mix(in oklch, var(--profile-sonnet) 35%, var(--ink-2));
+  --lane-opus: color-mix(in oklch, var(--profile-opus) 35%, var(--ink-2));
+
+  --rose: oklch(72% 0.18 15);
+  --amber: oklch(82% 0.14 75);
+  --mint: oklch(78% 0.16 160);
+
+  --paper: oklch(96% 0.01 240);
+  --paper-mid: oklch(82% 0.02 240);
+  --paper-dim: oklch(64% 0.02 240);
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 13px;
+  --sp-4: 21px;
+  --sp-5: 34px;
+  --sp-6: 55px;
+
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-pill: 999px;
+
+  --glow-soft: 0 0 32px -8px rgba(61, 255, 231, 0.30);
+  --glow-strong: 0 0 48px -4px rgba(61, 255, 231, 0.45);
+  --glow-rose: 0 0 32px -6px oklch(72% 0.18 15 / 0.45);
+  --glow-amber: 0 0 28px -8px oklch(82% 0.14 75 / 0.40);
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,0.5), 0 0 0 1px color-mix(in oklch, var(--ink-3) 70%, transparent);
+  --shadow-2: 0 12px 32px -12px rgba(0,0,0,0.6), 0 0 0 1px color-mix(in oklch, var(--ink-3) 60%, transparent);
+  --shadow-focus: 0 0 0 2px var(--cyan), 0 0 0 4px color-mix(in oklch, var(--cyan) 20%, transparent);
+
+  --ease-quint-out: cubic-bezier(.16, 1, .3, 1);
+  --ease-back-out: cubic-bezier(.34, 1.56, .64, 1);
+  --ease-snap: cubic-bezier(.22, .61, .36, 1);
+  --ease-smooth: cubic-bezier(.2, .8, .2, 1);
+  --ease-inout: cubic-bezier(.65, 0, .35, 1);
+
+  --mesh:
+    radial-gradient(ellipse 60% 40% at 15% 18%, oklch(28% 0.08 200 / 0.35), transparent 60%),
+    radial-gradient(ellipse 50% 35% at 88% 82%, oklch(22% 0.10 290 / 0.32), transparent 60%),
+    radial-gradient(ellipse 55% 45% at 50% 110%, oklch(20% 0.09 230 / 0.35), transparent 60%);
+
+  --font-display: "Fraunces", "Playfair Display", Georgia, serif;
+  --font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Legacy mapping used by the current vanilla miniapp. */
+  --bg: var(--ink-0);
+  --bg2: var(--ink-1);
+  --secondary-bg: var(--bg2);
+  --bg3: var(--ink-2);
+  --border: color-mix(in oklch, var(--ink-3) 78%, transparent);
+  --text: var(--paper);
+  --text2: var(--paper-dim);
+  --accent: var(--cyan);
+  --blue: oklch(72% 0.14 240);
+  --green: var(--mint);
+  --red: var(--rose);
+  --orange: var(--amber);
+  --purple: var(--profile-opus);
+  --pink: oklch(78% 0.18 340);
+  --yellow: var(--amber);
+  --success: var(--mint);
+  --warning: var(--amber);
+  --destructive: var(--rose);
+  --radius: var(--r-md);
+  --radius-sm: var(--r-sm);
+  --shadow-card: var(--shadow-1);
+}
