@@ -3,10 +3,12 @@ import { cn } from "../lib/cn";
 import { Button, type ButtonProps } from "../primitives/Button";
 
 export interface HeroAction {
-  label: string;
+  label: React.ReactNode;
   href?: string;
   onClick?: () => void;
   variant?: ButtonProps["variant"];
+  /** Stable key for React list reconciliation when label is JSX. */
+  key?: string;
 }
 
 export interface HeroTag {
@@ -60,8 +62,8 @@ export function DoMeHero({
 
             {actions.length > 0 && (
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
-                {actions.map((action) => (
-                  <Button key={action.label} asChild={Boolean(action.href)} variant={action.variant ?? "gold"} className="w-full whitespace-normal text-center sm:w-auto" onClick={action.onClick}>
+                {actions.map((action, index) => (
+                  <Button key={action.key ?? action.href ?? index} asChild={Boolean(action.href)} variant={action.variant ?? "gold"} className="w-full whitespace-normal text-center sm:w-auto" onClick={action.onClick}>
                     {action.href ? <a href={action.href}>{action.label}</a> : action.label}
                   </Button>
                 ))}
