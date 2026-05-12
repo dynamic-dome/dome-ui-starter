@@ -1,5 +1,9 @@
 @import "@dome/tokens/styles.css";
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .dome-theme,
 .dome-miniapp-theme {
   min-height: 100%;
