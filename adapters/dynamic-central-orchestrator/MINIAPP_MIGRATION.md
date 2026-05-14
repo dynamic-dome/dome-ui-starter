@@ -1,8 +1,8 @@
 # Migration: `dynamic-central-orchestrator` miniapp/dashboard -> shared DoMe tokens
 
-The miniapp is intentionally vanilla JS. Do not rewrite it to React just to use `@dome/ui`.
+The miniapp is intentionally vanilla JS. Do not rewrite it to React just to use `@dynamic-dome/ui`.
 
-Use `@dome/tokens` as the source of truth and migrate class recipes gradually.
+Use `@dynamic-dome/tokens` as the source of truth and migrate class recipes gradually.
 
 ## 1. Sync token CSS
 
@@ -56,4 +56,4 @@ tokens -> base -> components -> motion -> legacy
 
 ## 5. Future hybrid dashboard
 
-If a future dashboard becomes React/Vite, use `@dome/ui` components directly. Until then, use `@dome/tokens/miniapp.css` plus vanilla class recipes.
+If a future dashboard becomes React/Vite, use `@dynamic-dome/ui` components directly. Until then, use `@dynamic-dome/tokens/miniapp.css` plus vanilla class recipes.

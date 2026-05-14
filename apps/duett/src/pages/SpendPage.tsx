@@ -1,4 +1,4 @@
-import { Stack } from "@dome/ui";
+import { Stack } from "@dynamic-dome/ui";
 import { useSpend } from "../hooks";
 
 export function SpendPage() {

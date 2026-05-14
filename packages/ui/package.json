@@ -1,8 +1,17 @@
 {
-  "name": "@dome/ui",
+  "name": "@dynamic-dome/ui",
   "version": "0.1.0",
   "private": false,
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dynamic-dome/dome-ui-starter.git",
+    "directory": "packages/ui"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "restricted"
+  },
   "main": "dist/index.cjs",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +35,7 @@
     "build:storybook": "storybook build"
   },
   "dependencies": {
-    "@dome/tokens": "workspace:*",
+    "@dynamic-dome/tokens": "workspace:*",
     "@radix-ui/react-slot": "^1.2.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

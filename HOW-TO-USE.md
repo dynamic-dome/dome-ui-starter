@@ -4,7 +4,7 @@ Wegweiser fuer User und Agents. Was ist das, was ist drin, wie startest du es.
 
 ## Was ist das
 
-`@dome/ui` + `@dome/tokens` — eine zweiteilige Komponentenbibliothek fuer die
+`@dynamic-dome/ui` + `@dynamic-dome/tokens` — eine zweiteilige Komponentenbibliothek fuer die
 DoMe-Welt. Extrahiert aus zwei Source-Repos:
 
 - **`dome-dynamics-showcase`** (React + Vite + Tailwind + shadcn/Radix/CVA)
@@ -19,8 +19,8 @@ Anwendungsbereichen abgedeckt.
 
 ```
 packages/
-├─ tokens/        @dome/tokens — Design-Tokens (Website + Miniapp + Tailwind-Preset)
-└─ ui/            @dome/ui — 17 React-Komponenten
+├─ tokens/        @dynamic-dome/tokens — Design-Tokens (Website + Miniapp + Tailwind-Preset)
+└─ ui/            @dynamic-dome/ui — 17 React-Komponenten
    └─ src/
       ├─ primitives/   Button, Badge, Card, Input, Textarea, StatusPill, CommandCard
       ├─ layout/       AppShell, Section, Eyebrow, SectionHeading
@@ -28,7 +28,7 @@ packages/
       └─ miniapp/      MiniAppShell, BottomTabs, StatChip, QuickActionGrid, ActivityList
 
 adapters/
-├─ dome-dynamics-showcase/MIGRATION.md       Wie die Website auf @dome/ui umziehen kann
+├─ dome-dynamics-showcase/MIGRATION.md       Wie die Website auf @dynamic-dome/ui umziehen kann
 └─ dynamic-central-orchestrator/MINIAPP_MIGRATION.md  Wie die Miniapp dome-tokens.css zieht
 
 scripts/
@@ -50,7 +50,7 @@ pnpm -r build
 Browser-Storybook fuer visuelle Inspektion aller 17 Komponenten:
 
 ```bash
-pnpm --filter @dome/ui storybook
+pnpm --filter @dynamic-dome/ui storybook
 # → http://localhost:6006
 ```
 
@@ -60,11 +60,11 @@ Miniapp-Komponenten, AppShell + DoMeHero + Logo).
 ## Tests + Tooling
 
 ```bash
-pnpm --filter @dome/ui test     # vitest run (2/2 grün)
-pnpm --filter @dome/ui build    # tsup → dist/ (CJS + ESM + DTS, ~27 KB ESM)
+pnpm --filter @dynamic-dome/ui test     # vitest run (2/2 grün)
+pnpm --filter @dynamic-dome/ui build    # tsup → dist/ (CJS + ESM + DTS, ~27 KB ESM)
 ```
 
-Storybook nutzt Tailwind v3 mit dem `@dome/tokens/tailwind-preset` als Preset
+Storybook nutzt Tailwind v3 mit dem `@dynamic-dome/tokens/tailwind-preset` als Preset
 plus PostCSS + Autoprefixer. Tailwind v4 ist im pnpm-Store transitiv vorhanden,
 wird aber durch das Direkt-Pin auf v3 ueberlagert (der Preset ist v3-Style).
 
@@ -72,25 +72,25 @@ wird aber durch das Direkt-Pin auf v3 ueberlagert (der Preset ist v3-Style).
 
 ```bash
 cd ../dome-dynamics-showcase
-pnpm add @dome/ui @dome/tokens
+pnpm add @dynamic-dome/ui @dynamic-dome/tokens
 ```
 
 ```tsx
-import "@dome/ui/styles.css";
-import { Button, DoMeHero, Logo, SectionHeading } from "@dome/ui";
+import "@dynamic-dome/ui/styles.css";
+import { Button, DoMeHero, Logo, SectionHeading } from "@dynamic-dome/ui";
 ```
 
 Tailwind-Config der App:
 
 ```ts
 import type { Config } from "tailwindcss";
-import { domeTailwindPreset } from "@dome/tokens/tailwind-preset";
+import { domeTailwindPreset } from "@dynamic-dome/tokens/tailwind-preset";
 
 export default {
   presets: [domeTailwindPreset],
   content: [
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@dome/ui/dist/**/*.{js,mjs}",
+    "./node_modules/@dynamic-dome/ui/dist/**/*.{js,mjs}",
   ],
 } satisfies Config;
 ```

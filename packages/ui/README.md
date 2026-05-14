@@ -1,12 +1,12 @@
-# @dome/ui
+# @dynamic-dome/ui
 
 React components for DoMe Dynamics.
 
 ## Import
 
 ```tsx
-import "@dome/ui/styles.css";
-import { Button, Card, DoMeHero, MiniAppShell, StatusPill } from "@dome/ui";
+import "@dynamic-dome/ui/styles.css";
+import { Button, Card, DoMeHero, MiniAppShell, StatusPill } from "@dynamic-dome/ui";
 ```
 
 ## Components

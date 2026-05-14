@@ -1,5 +1,5 @@
 import type { Config } from "tailwindcss";
-import { domeTailwindPreset } from "@dome/tokens/tailwind-preset";
+import { domeTailwindPreset } from "@dynamic-dome/tokens/tailwind-preset";
 
 export default {
   presets: [domeTailwindPreset],

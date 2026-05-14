@@ -2,7 +2,7 @@
 
 This starter is based on two connected GitHub repos.
 
-## `willneverusegit/dome-dynamics-showcase`
+## `dynamic-dome/dome-dynamics-showcase`
 
 Observed stack:
 
@@ -17,7 +17,7 @@ Design extraction:
 - Promote brand-only variants (`gold`, `outlineGold`, `neon`) into first-class library variants.
 - Move all token definitions into `@dome/tokens` so the website and future projects share one source.
 
-## `willneverusegit/dynamic-central-orchestrator`
+## `dynamic-dome/dynamic-central-orchestrator`
 
 Observed miniapp/dashboard direction:
 

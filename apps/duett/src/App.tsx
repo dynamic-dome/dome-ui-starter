@@ -1,4 +1,4 @@
-import { Stack } from "@dome/ui";
+import { Stack } from "@dynamic-dome/ui";
 import { Link, NavLink, Outlet } from "react-router-dom";
 
 export function App() {

@@ -20,7 +20,7 @@ importers:
 
   apps/duett:
     dependencies:
-      '@dome/ui':
+      '@dynamic-dome/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -35,7 +35,7 @@ importers:
 
   apps/play:
     dependencies:
-      '@dome/ui':
+      '@dynamic-dome/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       react:
@@ -63,7 +63,7 @@ importers:
 
   packages/ui:
     dependencies:
-      '@dome/tokens':
+      '@dynamic-dome/tokens':
         specifier: workspace:*
         version: link:../tokens
       '@radix-ui/react-slot':

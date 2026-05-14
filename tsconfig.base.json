@@ -17,10 +17,10 @@
     "verbatimModuleSyntax": true,
     "allowSyntheticDefaultImports": true,
     "paths": {
-      "@dome/ui": [
+      "@dynamic-dome/ui": [
         "./packages/ui/src/index.ts"
       ],
-      "@dome/ui/styles.css": [
+      "@dynamic-dome/ui/styles.css": [
         "./packages/ui/src/styles.css"
       ]
     },

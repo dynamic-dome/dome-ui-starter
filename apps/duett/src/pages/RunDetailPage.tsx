@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Stack } from "@dome/ui";
+import { Stack } from "@dynamic-dome/ui";
 import { type Run, type RoundData, cancelRun, getRun } from "../api";
 import { useRunStream } from "../hooks";
 import { ConvergenceBadge } from "../components/ConvergenceBadge";

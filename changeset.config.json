@@ -5,8 +5,8 @@
   "fixed": [],
   "linked": [
     [
-      "@dome/ui",
-      "@dome/tokens"
+      "@dynamic-dome/ui",
+      "@dynamic-dome/tokens"
     ]
   ],
   "access": "restricted",

@@ -1,10 +1,10 @@
-import "@dome/ui/styles.css";
+import "@dynamic-dome/ui/styles.css";
 import "./style.css";
 
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "@dome/ui";
+import { ThemeProvider } from "@dynamic-dome/ui";
 
 import { App } from "./App";
 import { RunListPage } from "./pages/RunListPage";

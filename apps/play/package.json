@@ -1,5 +1,5 @@
 {
-  "name": "@dome/play",
+  "name": "@dynamic-dome/play",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@dome/ui": "workspace:*",
+    "@dynamic-dome/ui": "workspace:*",
     "react": "^19.2.6",
     "react-dom": "^19.2.6"
   }

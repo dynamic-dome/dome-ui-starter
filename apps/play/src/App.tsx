@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input, Modal, Stack, ThemeProvider } from "@dome/ui";
+import { Button, Input, Modal, Stack, ThemeProvider } from "@dynamic-dome/ui";
 
 export function App() {
   const [theme, setTheme] = useState<"light" | "dark">("light");
@@ -13,7 +13,7 @@ export function App() {
             <p className="play-eyebrow">DoMe UI Starter</p>
             <h1>Komponenten schnell testen und weiterentwickeln.</h1>
             <p>
-              Dieses Playground-Projekt konsumiert `@dome/ui` direkt aus dem Workspace und ist für
+              Dieses Playground-Projekt konsumiert `@dynamic-dome/ui` direkt aus dem Workspace und ist für
               schnelle Demos gedacht.
             </p>
           </header>

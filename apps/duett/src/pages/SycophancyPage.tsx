@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Stack } from "@dome/ui";
+import { Stack } from "@dynamic-dome/ui";
 import { useRuns } from "../hooks";
 
 export function SycophancyPage() {

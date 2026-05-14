@@ -1,5 +1,5 @@
 {
-  "name": "@dome/duett",
+  "name": "@dynamic-dome/duett",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -11,7 +11,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@dome/ui": "workspace:*",
+    "@dynamic-dome/ui": "workspace:*",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.1.0"

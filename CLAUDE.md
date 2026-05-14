@@ -16,17 +16,17 @@ User-Anweisungen in der laufenden Konversation schlagen alles.
 - **pnpm:** das Repo ist gepinnt auf `pnpm@9.15.4`. Lokal kann pnpm 11 sein —
   `pnpm install` warnt dann, das ist OK. Nicht auf pnpm 11 hochpinnen, weil
   das ZIP-Setup explizit fuer 9 geschrieben wurde.
-- **Test-Erfolgskriterien:** `pnpm --filter @dome/ui test` muss gruen bleiben.
+- **Test-Erfolgskriterien:** `pnpm --filter @dynamic-dome/ui test` muss gruen bleiben.
   Aktuell 2/2 in `src/primitives/Button.test.tsx`. Neue Komponenten brauchen
   nicht zwingend Tests, aber bestehende Tests duerfen nicht regressen.
 - **Build vor Storybook:** wenn Tokens veraendert wurden, `pnpm --filter
-  @dome/tokens build` vor Storybook-Start — sonst zeigt das Preview leere
+  @dynamic-dome/tokens build` vor Storybook-Start — sonst zeigt das Preview leere
   CSS-Vars.
 
 ## Tailwind-Versions-Lock
 
 Die Library ist **Tailwind v3** (gepinnt auf `^3.4.17` im UI-Paket). Der
-`tailwind-preset.ts` aus `@dome/tokens` ist v3-Style (`Partial<Config>` mit
+`tailwind-preset.ts` aus `@dynamic-dome/tokens` ist v3-Style (`Partial<Config>` mit
 `darkMode: "class"`, `theme.extend`, `plugins`). Tailwind v4 ist im Store
 transitiv vorhanden, wird aber durch das Direkt-Pin ueberlagert.
 

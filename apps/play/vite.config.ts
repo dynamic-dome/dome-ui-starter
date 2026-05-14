@@ -10,8 +10,8 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: [
-      { find: "@dome/ui/styles.css", replacement: uiStyles },
-      { find: "@dome/ui", replacement: uiEntry },
+      { find: "@dynamic-dome/ui/styles.css", replacement: uiStyles },
+      { find: "@dynamic-dome/ui", replacement: uiEntry },
     ],
   },
 });

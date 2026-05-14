@@ -1,4 +1,4 @@
-# Migration: `dome-dynamics-showcase` -> `@dome/ui`
+# Migration: `dome-dynamics-showcase` -> `@dynamic-dome/ui`
 
 The existing website/showcase already matches the library architecture: Vite + React + Tailwind + shadcn primitives + Radix + CVA.
 
@@ -7,20 +7,20 @@ The existing website/showcase already matches the library architecture: Vite + R
 When published locally:
 
 ```bash
-pnpm add @dome/ui @dome/tokens
+pnpm add @dynamic-dome/ui @dynamic-dome/tokens
 ```
 
 Or during monorepo development:
 
 ```bash
-pnpm add @dome/ui@workspace:* @dome/tokens@workspace:*
+pnpm add @dynamic-dome/ui@workspace:* @dynamic-dome/tokens@workspace:*
 ```
 
 ## 2. Import shared styles once
 
 ```tsx
 // src/main.tsx
-import "@dome/ui/styles.css";
+import "@dynamic-dome/ui/styles.css";
 ```
 
 Keep local font-face declarations in the app because fonts live in `/public/fonts` of the website repo.
@@ -31,7 +31,7 @@ Prefer the preset instead of duplicating token extensions:
 
 ```ts
 import type { Config } from "tailwindcss";
-import { domeTailwindPreset } from "@dome/tokens/tailwind-preset";
+import { domeTailwindPreset } from "@dynamic-dome/tokens/tailwind-preset";
 
 export default {
   presets: [domeTailwindPreset],
@@ -40,7 +40,7 @@ export default {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@dome/ui/dist/**/*.{js,mjs}",
+    "./node_modules/@dynamic-dome/ui/dist/**/*.{js,mjs}",
   ],
 } satisfies Config;
 ```
@@ -52,22 +52,22 @@ export default {
 - import { Card } from "@/components/ui/card";
 - import { Section, SectionHeading } from "@/components/Section";
 - import { Logo } from "@/components/Logo";
-+ import { Button, Card, Section, SectionHeading, Logo } from "@dome/ui";
++ import { Button, Card, Section, SectionHeading, Logo } from "@dynamic-dome/ui";
 ```
 
 Recommended first migration batch:
 
-- `src/components/ui/button.tsx` -> `@dome/ui/Button`
-- `src/components/ui/badge.tsx` -> `@dome/ui/Badge`
-- `src/components/ui/card.tsx` -> `@dome/ui/Card`
-- `src/components/Section.tsx` -> `@dome/ui/Section`
-- `src/components/Logo.tsx` -> `@dome/ui/Logo`
+- `src/components/ui/button.tsx` -> `@dynamic-dome/ui/Button`
+- `src/components/ui/badge.tsx` -> `@dynamic-dome/ui/Badge`
+- `src/components/ui/card.tsx` -> `@dynamic-dome/ui/Card`
+- `src/components/Section.tsx` -> `@dynamic-dome/ui/Section`
+- `src/components/Logo.tsx` -> `@dynamic-dome/ui/Logo`
 
 Keep route-aware components like `Navbar` in the app until the routing API is finalized. The library can later expose a route-agnostic `Navbar` with injected link components.
 
 ## 5. Keep app-specific assets local
 
-The current `Hero` imports `brand-logo.webp` and `founder-emblem.jpg`; those should remain app assets. Use `DoMeHero` from `@dome/ui` and pass the visual block as `visual`.
+The current `Hero` imports `brand-logo.webp` and `founder-emblem.jpg`; those should remain app assets. Use `DoMeHero` from `@dynamic-dome/ui` and pass the visual block as `visual`.
 
 ```tsx
 <DoMeHero

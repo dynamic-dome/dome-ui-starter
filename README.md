@@ -23,11 +23,11 @@ pnpm -r build
 
 ```tsx
 // src/main.tsx
-import "@dome/ui/styles.css";
+import "@dynamic-dome/ui/styles.css";
 ```
 
 ```tsx
-import { Button, DoMeHero, Logo, SectionHeading } from "@dome/ui";
+import { Button, DoMeHero, Logo, SectionHeading } from "@dynamic-dome/ui";
 ```
 
 Update Tailwind:
@@ -35,13 +35,13 @@ Update Tailwind:
 ```ts
 // tailwind.config.ts
 import type { Config } from "tailwindcss";
-import { domeTailwindPreset } from "@dome/tokens/tailwind-preset";
+import { domeTailwindPreset } from "@dynamic-dome/tokens/tailwind-preset";
 
 export default {
   presets: [domeTailwindPreset],
   content: [
     "./src/**/*.{ts,tsx}",
-    "./node_modules/@dome/ui/dist/**/*.{js,mjs}",
+    "./node_modules/@dynamic-dome/ui/dist/**/*.{js,mjs}",
   ],
 } satisfies Config;
 ```
@@ -51,7 +51,7 @@ export default {
 The miniapp should keep its vanilla JS architecture. Use the token package as a shared CSS source:
 
 ```bash
-pnpm --filter @dome/tokens build
+pnpm --filter @dynamic-dome/tokens build
 cp packages/tokens/dist/miniapp-theme.css ../dynamic-central-orchestrator/miniapp/css/dome-tokens.css
 ```
 

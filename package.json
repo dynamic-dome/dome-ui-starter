@@ -5,11 +5,11 @@
   "type": "module",
   "packageManager": "pnpm@9.15.4",
   "scripts": {
-    "build": "pnpm -r --filter './packages/**' build",
-    "dev": "pnpm --filter @dome/ui dev",
-    "test": "pnpm -r --filter './packages/**' test",
-    "storybook": "pnpm --filter @dome/ui storybook",
-    "build:storybook": "pnpm --filter @dome/ui build:storybook",
+    "build": "pnpm -r --filter './packages/*' build",
+    "dev": "pnpm --filter @dynamic-dome/ui dev",
+    "test": "pnpm -r --filter './packages/*' test",
+    "storybook": "pnpm --filter @dynamic-dome/ui storybook",
+    "build:storybook": "pnpm --filter @dynamic-dome/ui build:storybook",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release:local": "bash scripts/publish-local.sh"
