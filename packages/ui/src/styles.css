@@ -1,4 +1,4 @@
-@import "@dome/tokens/styles.css";
+@import "@dynamic-dome/tokens/styles.css";
 
 @tailwind base;
 @tailwind components;
