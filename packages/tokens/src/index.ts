@@ -1,4 +1,4 @@
-export const domeTokenVersion = "0.1.0";
+export const domeTokenVersion = "0.1.1";
 
 export const domeThemeClass = "dome-theme";
 export const domeMiniappThemeClass = "dome-miniapp-theme";

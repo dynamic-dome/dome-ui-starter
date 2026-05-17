@@ -15,7 +15,7 @@ Design extraction:
 
 - Keep the shadcn/Radix/CVA pattern because it already matches the app.
 - Promote brand-only variants (`gold`, `outlineGold`, `neon`) into first-class library variants.
-- Move all token definitions into `@dome/tokens` so the website and future projects share one source.
+- Move all token definitions into `@dynamic-dome/tokens` so the website and future projects share one source.
 
 ## `dynamic-dome/dynamic-central-orchestrator`
 
@@ -29,5 +29,5 @@ Observed miniapp/dashboard direction:
 Design extraction:
 
 - Do not force the miniapp into React.
-- Provide `@dome/tokens/miniapp.css` and CSS recipes that can be copied into the repo.
+- Provide `@dynamic-dome/tokens/miniapp.css` and CSS recipes that can be copied into the repo.
 - Provide React equivalents only for new dashboards or future hybrid surfaces.

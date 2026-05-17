@@ -28,7 +28,7 @@
     "./styles.css": "./dist/styles.css"
   },
   "scripts": {
-    "build": "tsup src/index.ts --dts --format cjs,esm --external react,react-dom --clean && cp src/styles.css dist/styles.css",
+    "build": "tsup src/index.ts --dts --format cjs,esm --external react,react-dom --clean && node scripts/copy-assets.mjs",
     "dev": "tsup src/index.ts --watch --dts --format cjs,esm --external react,react-dom",
     "test": "vitest run",
     "storybook": "storybook dev -p 6006",

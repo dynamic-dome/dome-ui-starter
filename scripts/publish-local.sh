@@ -12,4 +12,4 @@ for pkg in packages/tokens packages/ui; do
   )
 done
 
-echo "Published @dome/tokens and @dome/ui to $REGISTRY"
+echo "Published @dynamic-dome/tokens and @dynamic-dome/ui to $REGISTRY"

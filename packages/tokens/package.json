@@ -35,7 +35,7 @@
     "./miniapp.css": "./dist/miniapp-theme.css"
   },
   "scripts": {
-    "build": "tsup src/index.ts src/tailwind-preset.ts --dts --format cjs,esm --clean && cp src/*.css dist/",
+    "build": "tsup src/index.ts src/tailwind-preset.ts --dts --format cjs,esm --clean && node scripts/copy-assets.mjs",
     "dev": "tsup src/index.ts src/tailwind-preset.ts --watch --dts --format cjs,esm",
     "test": "echo 'tokens: no tests yet'"
   },

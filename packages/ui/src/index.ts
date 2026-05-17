@@ -12,12 +12,15 @@ export {
   type CardProps,
 } from "./primitives/Card";
 export { Input, type InputProps } from "./primitives/Input";
+export { Modal, type ModalProps } from "./primitives/Modal";
 export { Textarea, type TextareaProps } from "./primitives/Textarea";
 export { StatusPill, statusLabels, type StatusKind, type StatusPillProps } from "./primitives/StatusPill";
 export { CommandCard, type CommandCardProps, type CommandCardAction } from "./primitives/CommandCard";
 
 export { Section, Eyebrow, SectionHeading, type SectionProps, type EyebrowProps, type SectionHeadingProps } from "./layout/Section";
+export { Stack, type StackProps } from "./layout/Stack";
 export { AppShell, type AppShellProps } from "./layout/AppShell";
+export { ThemeProvider, type ThemeProviderProps } from "./layout/ThemeProvider";
 
 export { Logo, type LogoProps } from "./brand/Logo";
 export { DoMeHero, type DoMeHeroProps, type HeroAction, type HeroTag } from "./brand/DoMeHero";
