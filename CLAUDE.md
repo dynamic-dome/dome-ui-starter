@@ -67,3 +67,26 @@ gegen den letzten Commit lesen, weil das ZIP eigene Toolchain-Annahmen mitbringt
 Globale Regel: keine Tests gegen Production-DBs. Gilt hier nicht, weil die
 Library keine DB benutzt — Tests sind reines Vitest auf React-Komponenten,
 keine Isolation noetig.
+
+## Beziehung zu dome-ui-foundation-starter (geklärt 2026-06-11)
+
+**Dieses Repo (`dome-ui-starter`) ist die kanonische, produktiv genutzte UI-Library.**
+
+- Publiziert `@dynamic-dome/tokens` + `@dynamic-dome/ui` (aktuell 0.1.1) auf **GitHub Packages**
+  (`npm.pkg.github.com` — per pnpm-lock des Showcase belegt).
+- **Konsument:** `dome-dynamics-showcase` (dynamic-dome.com) via `dependencies: ^0.1.1`
+  und `vite.config.ts ssr.noExternal`.
+- Stack bewusst gepinnt: React 18, Tailwind v3, pnpm 9.15.4 — synchron zum Showcase.
+
+**`dome-ui-foundation-starter` ist ein paralleles Greenfield-Scaffold** (`@dome/foundation` +
+`@dome/ui`, React 19, pnpm 11, Storybook 10, Changesets) **ohne produktiven Konsumenten**.
+Es ist Kandidat als Nachfolger, KEIN Drop-in-Ersatz (anderer Paket-Namespace, React-Major-Sprung).
+
+Regeln bis zu einer expliziten Migrations-Entscheidung:
+
+1. Neue Komponenten/Tokens für die Live-Site entstehen HIER, nicht im foundation-starter.
+2. Keine Komponente parallel in beiden Repos bauen (Drift-Falle).
+3. Eine Migration Showcase → foundation-starter ist ein eigenes Projekt mit Plan
+   (Token-Paritäts-Check, React-19-Upgrade des Showcase, Namespace-Umstellung) — nicht nebenbei.
+
+Hintergrund: Portfolio-Stack-Atlas 2026-06-11 (`dominic-wiki/wiki/synthesis/2026-06-11-portfolio-stack-atlas.md`).
