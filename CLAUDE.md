@@ -11,6 +11,15 @@ Wegweiser steht in `HOW-TO-USE.md`.
 `~/.claude/CLAUDE.md` schlaegt projekt-spezifische Files. Explizite
 User-Anweisungen in der laufenden Konversation schlagen alles.
 
+## Design-SSoT und Sync-Kanaele
+
+Dieses Repo ist Single Source of Truth fuer alle Design-Assets (Tokens,
+Komponenten). Drei Sync-Kanaele: Website via npm publish (GitHub Packages,
+NUR `pnpm publish` wegen `workspace:*`), DCO-Miniapp via
+`scripts/sync-miniapp-css.sh`, Claude-Design-Projekt via DesignSync-Tool.
+Details + Workflow: `docs/DESIGN-SYNC.md`. Token-Aenderungen NIE direkt im
+DCO- oder Website-Repo machen.
+
 ## Build- und Test-Konventionen
 
 - **pnpm:** das Repo ist gepinnt auf `pnpm@9.15.4`. Lokal kann pnpm 11 sein —

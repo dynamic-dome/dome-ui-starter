@@ -17,3 +17,6 @@ yarn-error.log*
 
 # Cygwin/Git-Bash crash dumps
 *.stackdump
+
+# Agent-Memory (session-lokal, gehoert nicht ins Repo)
+.agent-memory/
