@@ -11,7 +11,7 @@ export const domeTailwindPreset = {
     },
     extend: {
       fontFamily: {
-        display: ["var(--font-display)", "Space Grotesk", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "Fraunces", "Playfair Display", "Georgia", "serif"],
         sans: ["var(--font-sans)", "Inter", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "JetBrains Mono", "ui-monospace", "SF Mono", "monospace"],
       },

@@ -76,7 +76,7 @@ pnpm release:local
 
 DoMe UI has two design modes:
 
-1. **DoMe Website Theme**: dark editorial surface, brushed gold, neon cyan/magenta, Space Grotesk + Inter.
+1. **DoMe Website Theme**: dark editorial surface, brushed gold, neon cyan/magenta, Fraunces (Display) + Inter.
 2. **DCO Miniapp Theme**: compact operational UI, Organic Obsidian Glow, cyan as action/status signal, quiet motion.
 
 The React components use the same token names as the current website. The miniapp package exports compatible CSS variables and class recipes so the vanilla app can migrate gradually instead of being rewritten in React.
