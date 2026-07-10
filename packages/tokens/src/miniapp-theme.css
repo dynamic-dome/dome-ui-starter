@@ -20,6 +20,15 @@
   --lane-sonnet: color-mix(in oklch, var(--profile-sonnet) 35%, var(--ink-2));
   --lane-opus: color-mix(in oklch, var(--profile-opus) 35%, var(--ink-2));
 
+  /* Subsystem colors (semantic accents, not global surface colors). */
+  --subsystem-bridge: oklch(76% 0.13 190);
+  --subsystem-codex: oklch(72% 0.15 255);
+  --subsystem-worker: oklch(78% 0.16 145);
+  --subsystem-portier: oklch(82% 0.14 72);
+  --subsystem-mcp: oklch(70% 0.15 292);
+  --subsystem-notebooklm: oklch(75% 0.16 330);
+  --subsystem-security: oklch(70% 0.17 24);
+
   --rose: oklch(72% 0.18 15);
   --amber: oklch(82% 0.14 75);
   --mint: oklch(78% 0.16 160);
@@ -61,6 +70,9 @@
     radial-gradient(ellipse 50% 35% at 88% 82%, oklch(22% 0.10 290 / 0.32), transparent 60%),
     radial-gradient(ellipse 55% 45% at 50% 110%, oklch(20% 0.09 230 / 0.35), transparent 60%);
 
+  /* Grain: static base64 SVG noise (feTurbulence 0.9, 4 octaves), mix-blend overlay. */
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.04 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+
   --font-display: "Fraunces", "Playfair Display", Georgia, serif;
   --font-body: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -87,4 +99,20 @@
   --radius: var(--r-md);
   --radius-sm: var(--r-sm);
   --shadow-card: var(--shadow-1);
+
+  /* z-index scale — SSOT for stacking layers:
+     content < sticky/dropdown < overlay/modal < toast < tooltip < grain (decorative, topmost). */
+  --z-base: 1;
+  --z-sticky: 90;
+  --z-dropdown: 120;
+  --z-overlay: 300;
+  --z-toast: 1000;
+  --z-tooltip: 1100;
+  --z-grain: 9999;
+
+  /* Dashboard accent tokens — bit-identical to the values previously hardcoded in dashboard.css. */
+  --dash-danger: #ff6b6b;
+  --dash-warning: #facc15;
+  --dash-info: #67e8f9;
+  --dash-success: #4ade80;
 }
