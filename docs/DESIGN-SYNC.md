@@ -1,6 +1,4 @@
-# Design-Sync: dome-ui-starter als Single Source of Truth
-
-Stand: 2026-07-10
+# Design sync
 
 ## Architektur
 
@@ -8,21 +6,18 @@ Stand: 2026-07-10
                     ┌─────────────────────────────┐
                     │  dome-ui-starter (DIESES     │
                     │  Repo) = SSoT für Tokens,    │
-                    │  Komponenten, Assets         │
+                    │  Komponenten                  │
                     └──────┬───────┬───────┬───────┘
-        npm publish        │       │       │  DesignSync-Tool
-        (GitHub Packages)  │       │       │  (Claude Code Session)
+        package publish    │       │       │  External design tooling
+        (configured registry)      │       │  (optional)
                            ▼       │       ▼
               ┌────────────────┐   │   ┌──────────────────────────┐
-              │ dome-dynamics  │   │   │ claude.ai/design-Projekt │
-              │ (Website,      │   │   │ "DoMe Dynamics Design    │
-              │ dynamic-dome   │   │   │ System" — Spielwiese für │
-              │ .com)          │   │   │ neue Designs             │
+              │ Consumer app   │   │   │ Design workspace          │
               └────────────────┘   │   └──────────────────────────┘
                                    │ scripts/sync-miniapp-css.sh
                                    ▼
                       ┌──────────────────────────┐
-                      │ DCO Miniapp + Dashboard  │
+                      │ Vanilla consumer app     │
                       │ (vanilla JS, konsumiert  │
                       │ generiertes              │
                       │ miniapp/css/dome-tokens  │
@@ -32,66 +27,68 @@ Stand: 2026-07-10
 
 ## Die drei Sync-Kanäle
 
-### 1. Website (`dome-dynamics`)
+### 1. React consumer
 
-Konsumiert `@dynamic-dome/tokens` + `@dynamic-dome/ui` von GitHub Packages
-(`npm.pkg.github.com`). Nach Token-/Komponenten-Änderung:
+Consumes `@dynamic-dome/tokens` + `@dynamic-dome/ui` from the configured package
+registry. After a versioned change:
 
 ```bash
 # Version in packages/{tokens,ui}/package.json bumpen, dann PRO PAKET:
 cd packages/tokens && pnpm publish --no-git-checks
 cd packages/ui && pnpm publish --no-git-checks
-# Verifikation (kein "workspace:*" als Dep!):
+# Verify the published dependency metadata:
 npm view @dynamic-dome/ui@<version> dependencies
 ```
 
-WICHTIG: `pnpm publish`, NIEMALS `npm publish` — `@dynamic-dome/ui` hat
-`workspace:*` auf tokens, das nur pnpm beim Publish auflöst.
-Publish braucht in `~/.npmrc` ein PAT mit `write:packages`-Scope.
+For manual package publishing, use `pnpm publish`: it resolves the UI package's
+`workspace:*` token dependency during publishing. The local Verdaccio helper
+`scripts/publish-local.sh` is a separate, existing path and invokes `npm publish`
+for each package. Never put tokens, credentials, or user-specific registry
+configuration in this repository.
 
-### 2. DCO Miniapp/Dashboard (`~/dynamic_central_orchestrator`)
+### Release automation blocker (not changed)
+
+The checked-in CI and release workflows are not currently aligned with the root
+package scripts: CI invokes `pnpm lint` and `pnpm typecheck`, and the release
+workflow invokes `pnpm release`; none of those root scripts exists. This is a
+pre-existing automation issue. No workflow or publishing behavior was changed in
+this documentation-only update; resolve and verify the release path in a separate
+decision before relying on CI or automated publishing.
+
+### 2. Vanilla consumer
 
 Vanilla JS — bekommt NUR das Token-CSS, keine React-Komponenten:
 
 ```bash
-bash scripts/sync-miniapp-css.sh "C:/Users/domes/dynamic_central_orchestrator"
+bash scripts/sync-miniapp-css.sh ../consumer-app
 ```
 
-Erzeugt `miniapp/css/dome-tokens.css` (mit GENERIERT-Header). Die
-HTML-Einstiege (miniapp/index.html, dashboard.html, dashboard_auth.html,
-ops/ops.html) verlinken diese Datei statt des alten `tokens.css`.
-Token-Änderungen im DCO-Repo selbst sind verboten — immer hier in
-`packages/tokens/src/miniapp-theme.css` ändern und neu syncen.
+The script produces `miniapp/css/dome-tokens.css` with a generated-file header.
+Import it before the consumer's existing CSS layers.
+Treat the copied file as generated output: change the source here in
+`packages/tokens/src/miniapp-theme.css`, then sync again.
 
-### 3. Claude Design (claude.ai/design)
+### 3. Optional design workspace
 
-Projekt: **DoMe Dynamics Design System** (`ccdee95f-8079-473a-8d62-d491d077d9a2`).
-Spiegelt Tokens (`tokens/*.css`), Komponenten (`components/**`) und
-Guidelines. Sync läuft über das `DesignSync`-Tool in einer
-Claude-Code-Session ("sync das Design-Projekt").
+An external design workspace may mirror tokens, components, and guidelines. It is
+not a source of truth and must not contain private project identifiers or credentials.
 
 ## Workflow: Neues Design in Claude Design entwerfen → hier einbauen
 
-1. **Entwerfen:** Auf claude.ai/design im Projekt "DoMe Dynamics Design
-   System" experimentieren. Die Tokens dort sind identisch mit diesem Repo —
-   was dort gut aussieht, sieht auch live gut aus.
-2. **Exportieren:** Claude Code sagen: "hol <Komponente> aus dem
-   Design-Projekt" — die Session liest die Datei per DesignSync (`get_file`)
-   und portiert sie:
+1. **Entwerfen:** In einem geeigneten Design-Werkzeug experimentieren.
+2. **Exportieren:** Komponenten in das passende Paket portieren:
    - **Website-Komponente (React):** nahezu direkt nach
      `packages/ui/src/...` (Props-API + `cn()`-Konvention angleichen,
      Story dazu).
-   - **Miniapp-Element:** NICHT als React übernehmen — als CSS-Klassen-Rezept
-     auf Token-Basis portieren (siehe
-     `adapters/dynamic-central-orchestrator/MINIAPP_MIGRATION.md`).
-3. **Ausrollen:** Tests grün halten, Version bumpen, publishen (Website)
-   bzw. `sync-miniapp-css.sh` (DCO).
-4. **Rückspiegeln:** Die finale Fassung zurück ins Design-Projekt schreiben,
-   damit Spielwiese und Realität nicht driften.
+   - **Vanilla-Element:** NICHT als React übernehmen — als CSS-Klassen-Rezept
+     auf Token-Basis portieren.
+3. **Ausrollen:** Tests ausführen, Version erhöhen und veröffentlichen (React)
+   beziehungsweise `sync-miniapp-css.sh` nutzen (Vanilla).
+4. **Rückspiegeln:** Die finale Fassung bei Bedarf zurück ins Design-Werkzeug
+   übernehmen, damit Entwurf und Code nicht driften.
 
 ## Invarianten
 
-- Design-Änderungen entstehen NIE direkt im Website- oder DCO-Repo.
-- `miniapp/css/dome-tokens.css` im DCO ist generiert — nie von Hand editieren.
-- Das Claude-Design-Projekt ist Spielwiese + Vorschau, nicht die Quelle:
-  kanonisch ist immer der Code in diesem Repo.
+- Änderungsquellen sollten nicht zwischen mehreren Consumer-Repositories driften.
+- Die kopierte `miniapp/css/dome-tokens.css` ist generiert und wird nicht von Hand editiert.
+- Ein Design-Arbeitsbereich ist Vorschau, nicht die Quelle: kanonisch ist der Code in diesem Repo.

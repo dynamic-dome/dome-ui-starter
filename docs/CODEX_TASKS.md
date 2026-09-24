@@ -1,6 +1,6 @@
-# Codex / Claude Code tasks for applying this starter
+# Consumer integration checklist
 
-## Task 1 — Add local packages to `dome-dynamics-showcase`
+## Task 1 — Add the packages to a React consumer
 
 1. Install `@dynamic-dome/ui` and `@dynamic-dome/tokens` from Verdaccio or workspace.
 2. Import `@dynamic-dome/ui/styles.css` in `src/main.tsx`.
@@ -8,13 +8,13 @@
 4. Keep route-aware `Navbar` and asset-heavy `Hero` local in the first pass.
 5. Run `pnpm lint && pnpm test && pnpm build`.
 
-## Task 2 — Sync tokens into `dynamic-central-orchestrator`
+## Task 2 — Sync tokens into a vanilla consumer
 
 1. Build `@dynamic-dome/tokens`.
 2. Copy `packages/tokens/dist/miniapp-theme.css` to `miniapp/css/dome-tokens.css`.
 3. Import it before `base.css` in `miniapp/index.html`.
-4. Run miniapp smoke tests and verify Start / Inbox / Aktivität / Ergebnisse / Mehr.
-5. Replace duplicated token declarations only after screenshots match.
+4. Run the consumer's smoke tests and verify its supported navigation flows.
+5. Replace duplicated token declarations only after a visual comparison in that consumer.
 
 ## Task 3 — Promote more components
 

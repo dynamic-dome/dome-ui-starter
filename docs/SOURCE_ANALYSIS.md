@@ -1,8 +1,8 @@
 # Source analysis
 
-This starter is based on two connected GitHub repos.
+This starter combines patterns for React/Vite/Tailwind and vanilla JavaScript consumers.
 
-## `dynamic-dome/dome-dynamics-showcase`
+## React/Vite/Tailwind reference pattern
 
 Observed stack:
 
@@ -17,14 +17,15 @@ Design extraction:
 - Promote brand-only variants (`gold`, `outlineGold`, `neon`) into first-class library variants.
 - Move all token definitions into `@dynamic-dome/tokens` so the website and future projects share one source.
 
-## `dynamic-dome/dynamic-central-orchestrator`
+## Vanilla JavaScript reference pattern
 
 Observed miniapp/dashboard direction:
 
 - Vanilla JS miniapp, no React/Vue framework.
 - Shared CSS order: tokens -> base -> components -> motion -> legacy.
-- `miniapp/css/tokens.css` is the single source of truth for Mini App + Dashboard and uses the `Organic Obsidian Glow` token system.
-- UX direction: five top-level tabs, Welcome Hero, simplified labels, cyan diet, motion only when something is active.
+- A consumer-local `miniapp/css/tokens.css` may define its existing Mini App + Dashboard tokens.
+- UX direction: simplified labels, restrained accent color, and motion only when
+  something is active.
 
 Design extraction:
 

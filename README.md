@@ -1,9 +1,9 @@
 # DoMe UI
 
-A small component library extracted from the existing DoMe/Dynamic Dome surfaces:
-
-- `dome-dynamics-showcase`: React + Vite + Tailwind + shadcn/Radix primitives.
-- `dynamic-central-orchestrator`: vanilla Telegram Mini App + dashboard tokens (`Organic Obsidian Glow`).
+A starter component library for DoMe-branded React interfaces and shared CSS design tokens.
+It includes the example workspace apps `apps/play` and `apps/duett`, while
+the packages are intended for integration in other applications.
+It does not include a deployed site, a backend, or user data.
 
 This starter is intentionally split into two packages:
 
@@ -61,7 +61,7 @@ Then import it before `base.css` / `components.css`:
 <link rel="stylesheet" href="/miniapp/css/dome-tokens.css">
 ```
 
-See `adapters/dynamic-central-orchestrator/MINIAPP_MIGRATION.md` and `adapters/dome-dynamics-showcase/MIGRATION.md`.
+See the migration notes in `adapters/` for example integration patterns.
 
 ## Publish to local Verdaccio
 
@@ -79,4 +79,5 @@ DoMe UI has two design modes:
 1. **DoMe Website Theme**: dark editorial surface, brushed gold, neon cyan/magenta, Fraunces (Display) + Inter.
 2. **DCO Miniapp Theme**: compact operational UI, Organic Obsidian Glow, cyan as action/status signal, quiet motion.
 
-The React components use the same token names as the current website. The miniapp package exports compatible CSS variables and class recipes so the vanilla app can migrate gradually instead of being rewritten in React.
+The React components and CSS exports share token names. The miniapp CSS is intended
+as a gradual, opt-in migration aid for vanilla JavaScript interfaces.
