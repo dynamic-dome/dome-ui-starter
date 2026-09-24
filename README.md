@@ -52,7 +52,7 @@ The miniapp should keep its vanilla JS architecture. Use the token package as a 
 
 ```bash
 pnpm --filter @dynamic-dome/tokens build
-cp packages/tokens/dist/miniapp-theme.css ../dynamic-central-orchestrator/miniapp/css/dome-tokens.css
+cp packages/tokens/dist/miniapp-theme.css ../consumer-app/miniapp/css/dome-tokens.css
 ```
 
 Then import it before `base.css` / `components.css`:
