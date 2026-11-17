@@ -4,23 +4,17 @@ Wegweiser fuer User und Agents. Was ist das, was ist drin, wie startest du es.
 
 ## Was ist das
 
-`@dynamic-dome/ui` + `@dynamic-dome/tokens` — eine zweiteilige Komponentenbibliothek fuer die
-DoMe-Welt. Extrahiert aus zwei Source-Repos:
-
-- **`dome-dynamics-showcase`** (React + Vite + Tailwind + shadcn/Radix/CVA)
-  liefert Sprache, Tokens und Komponenten fuer die Website.
-- **`dynamic_central_orchestrator`** (Vanilla-JS-Miniapp + Dashboard) liefert
-  das Mini-App-Token-System "Organic Obsidian Glow".
-
-Zwei Theme-Welten, ein gemeinsames Token-Paket, eine React-Library mit beiden
-Anwendungsbereichen abgedeckt.
+`@dynamic-dome/ui` + `@dynamic-dome/tokens` — eine zweiteilige Komponentenbibliothek
+fuer DoMe-Oberflaechen. Sie enthält wiederverwendbare React-Komponenten und
+framework-unabhängige CSS-Tokens. Die Workspace-Apps `apps/play` und `apps/duett`
+nutzen die UI-Pakete intern; ein Backend und Nutzerdaten sind nicht enthalten.
 
 ## Struktur
 
 ```
 packages/
 ├─ tokens/        @dynamic-dome/tokens — Design-Tokens (Website + Miniapp + Tailwind-Preset)
-└─ ui/            @dynamic-dome/ui — 17 React-Komponenten
+└─ ui/            @dynamic-dome/ui — React-Komponenten
    └─ src/
       ├─ primitives/   Button, Badge, Card, Input, Textarea, StatusPill, CommandCard
       ├─ layout/       AppShell, Section, Eyebrow, SectionHeading
@@ -28,8 +22,12 @@ packages/
       └─ miniapp/      MiniAppShell, BottomTabs, StatChip, QuickActionGrid, ActivityList
 
 adapters/
-├─ dome-dynamics-showcase/MIGRATION.md       Wie die Website auf @dynamic-dome/ui umziehen kann
-└─ dynamic-central-orchestrator/MINIAPP_MIGRATION.md  Wie die Miniapp dome-tokens.css zieht
+├─ dome-dynamics-showcase/MIGRATION.md       Beispiel für eine React-Integration
+└─ dynamic-central-orchestrator/MINIAPP_MIGRATION.md  Beispiel für eine Vanilla-Integration
+
+apps/
+├─ play/          Vite-Beispiel-App für @dynamic-dome/ui
+└─ duett/         Vite-Beispiel-App für @dynamic-dome/ui
 
 scripts/
 ├─ publish-local.sh                          Lokales Verdaccio-Publish
@@ -47,21 +45,21 @@ pnpm install
 pnpm -r build
 ```
 
-Browser-Storybook fuer visuelle Inspektion aller 17 Komponenten:
+Browser-Storybook für eine visuelle Inspektion:
 
 ```bash
 pnpm --filter @dynamic-dome/ui storybook
 # → http://localhost:6006
 ```
 
-22 Stories sind enthalten (Button-Varianten, alle StatusPill-Status, alle
-Miniapp-Komponenten, AppShell + DoMeHero + Logo).
+Die Stories decken ausgewählte Varianten der Komponenten ab; sie ersetzen keine
+Prüfung im Zielprodukt.
 
 ## Tests + Tooling
 
 ```bash
-pnpm --filter @dynamic-dome/ui test     # vitest run (2/2 grün)
-pnpm --filter @dynamic-dome/ui build    # tsup → dist/ (CJS + ESM + DTS, ~27 KB ESM)
+pnpm --filter @dynamic-dome/ui test     # vitest run
+pnpm --filter @dynamic-dome/ui build    # tsup → dist/ (CJS + ESM + DTS)
 ```
 
 Storybook nutzt Tailwind v3 mit dem `@dynamic-dome/tokens/tailwind-preset` als Preset
@@ -97,11 +95,11 @@ export default {
 
 ## In der Vanilla-Miniapp nutzen (ohne React-Umbau)
 
-Die DCO-Miniapp soll bewusst Vanilla bleiben. Token-Datei kopieren:
+Für eine Vanilla-JavaScript-Oberfläche kann die Token-Datei kopiert werden:
 
 ```bash
-bash scripts/sync-miniapp-css.sh ~/dynamic_central_orchestrator
-# → dynamic_central_orchestrator/miniapp/css/dome-tokens.css
+bash scripts/sync-miniapp-css.sh ../consumer-app
+# → <zielprojekt>/miniapp/css/dome-tokens.css
 ```
 
 Dann in `miniapp/index.html` vor `base.css` importieren:
@@ -122,20 +120,7 @@ npm adduser --registry http://localhost:4873
 pnpm release:local
 ```
 
-Details: `docs/verdaccio.md` (falls geplant).
-
-## Bekannte Reibung
-
-- **`apps/duett` + `apps/play` Tests:** Vitest fehlt in deren `devDependencies`.
-  Sind Reste vom initialen Setup, brauchen Aufraeumen oder eigene Vitest-Dep.
-- **Toolchain-Regression vom ZIP-Import:** Root-`package.json` hat kein ESLint,
-  kein Prettier, kein Vite mehr — alles im UI-Paket lokal. Bei groesserer
-  Toolchain-Saeuberung in einer eigenen Session angehen.
-- **Storybook 9 verfuegbar:** Aktuell auf 8.6.18 fixiert (Vite-6-Pin im UI-Paket).
-  Upgrade waere `npx storybook@latest upgrade` + Codemods.
-- **Storybook-Vite-Peer-Mismatch nicht ganz weg:** Vite 6 ist explizit gepinnt,
-  Vite 7 liegt transitiv noch im Store (durch andere Konsumenten). Funktioniert
-  trotzdem, weil `packages/ui/node_modules/vite` auf v6 zeigt.
+Details: `docs/verdaccio.md`.
 
 ## Wo lebt was
 
@@ -145,9 +130,3 @@ Details: `docs/verdaccio.md` (falls geplant).
 - **Tests:** `packages/ui/src/primitives/Button.test.tsx` (mehr koennen folgen)
 - **Storybook-Config:** `packages/ui/.storybook/{main.ts,preview.ts}`
 - **Tailwind-Setup:** `packages/ui/{tailwind.config.ts,postcss.config.js}`
-
-## Session-Spuren
-
-Volldetail siehe `.agent-memory/session-summary.md`.
-Wiki-Eintraege ueber Sessions an diesem Projekt:
-`~/wiki/wiki/queries/*session*dome-ui*`.
